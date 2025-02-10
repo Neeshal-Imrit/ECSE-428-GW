@@ -16,8 +16,10 @@ Feature: System Response Time for Smooth User Experience
     When the user views the list of tasks for "Project Alpha"
     Then the system should load and display the task list within 2 seconds
 
-  Scenario: System responds within 2 seconds for navigating between pages
+  #Error Flow: Missing details
+  Scenario: System responds in more than 2 seconds for navigating between pages
     Given the user is logged into the Kanban system
     And the user is on the "Project Dashboard"
     When the user clicks on the "Team" tab
     Then the system should load and display the "Team" page within 2 seconds
+    Then  the system logs the correlation id

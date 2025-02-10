@@ -13,3 +13,9 @@ Feature: System Scalability for Large Number of Concurrent Users
     Given the system is handling 10,000 concurrent users
     When a user attempts to create a new project or task
     Then the system should process and save the new project or task within 3 seconds, without any errors or crashes
+
+    Scenario: System performance remains is  unstable with 50,000 users
+    Given the system is handling 50,000 concurrent users
+    When a user attempts to create a new project or task
+    Then the system is slow, it takes more than 2  seconds for the page respond.
+
