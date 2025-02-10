@@ -1,5 +1,4 @@
 Feature: Restore Deleted Tasks in Kanban Project Coordination System
-
   As an admin
   I want to restore deleted tasks in projects
   So that I can recover them if they were removed accidentally
@@ -20,3 +19,14 @@ Feature: Restore Deleted Tasks in Kanban Project Coordination System
     When the admin clicks on the "Restore Task" button
     Then the system should display an error message "Task not found"
     And no task should be restored
+  #Error Flow
+
+  Scenario: System fails to restore deleted task due to server error
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects the project "Project Beta"
+    And the admin selects a deleted task "Task 3"
+    When the admin clicks on the "Restore Task" button
+    And a server error occurs
+    Then the system should display an error message "Failed to restore task due to server error. Please try again later."
+    And the system should log the error for further investigation

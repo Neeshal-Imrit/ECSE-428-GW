@@ -1,5 +1,4 @@
 Feature: Log the Time Spent on Each Task in the Kanban Project Coordination System
-
   As a user
   I want to log the time I spend on each task
   So that I can track and report my work hours
@@ -43,3 +42,17 @@ Feature: Log the Time Spent on Each Task in the Kanban Project Coordination Syst
     And the user saves the log
     Then the system should save both time logs for "Task 1: Planning" and "Task 2: Development"
     And the system should display the respective hours spent on each task
+   #Error Flow
+
+  Scenario: System fails to save time log due to server error
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects the project "Project Delta"
+    And the user selects the task "Task 3: Testing"
+    When the user clicks on the "Log Time" button
+    And the user enters "2" hours spent
+    And the user adds a note "Initial testing phase"
+    And the user clicks the "Save Time Log" button
+    And a server error occurs
+    Then the system should display an error message "Failed to save time log due to server error. Please try again later."
+    And the system should log the error for further investigation

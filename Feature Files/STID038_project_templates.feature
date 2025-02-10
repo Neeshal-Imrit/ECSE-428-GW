@@ -48,3 +48,19 @@ Feature: Create Reusable Project Templates in Kanban Project Coordination System
     Then the system should save "Project Template 2" with the assigned permissions
     And the template should be available only to the "Development Team" group
     And the admin should receive a confirmation message "Template 'Project Template 2' created successfully with team permissions"
+
+    # Error Flow
+  Scenario: System fails to save project template due to server error
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects the project "Project Gamma"
+    When the admin clicks on the "Create Template" button
+    And the admin enters the template name "Project Template 3"
+    And the admin selects the category "Operations"
+    And the admin adds a description "Template for operations projects"
+    And the admin chooses the task default structure which includes "Planning", "Execution", "Monitoring", and "Closure"
+    And the admin sets the default project deadline to "2025-09-30"
+    And the admin clicks the "Save Template" button
+    And a server error occurs
+    Then the system should display an error message "Failed to save project template due to server error. Please try again later."
+    And the system should log the error for further investigation

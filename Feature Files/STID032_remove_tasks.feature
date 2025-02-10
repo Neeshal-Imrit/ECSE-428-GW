@@ -1,5 +1,4 @@
 Feature: Remove Tasks in Projects in Kanban Project Coordination System
-
   As an admin
   I want to remove tasks in projects
   So that I can clean up tasks that are no longer required
@@ -22,3 +21,14 @@ Feature: Remove Tasks in Projects in Kanban Project Coordination System
     And the admin clicks on the "Remove Task" button
     Then the system should display an error message "Task not found"
     And no task should be removed
+  #Alternative Flow
+
+  Scenario: Admin cancels task removal
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects the project "Project Gamma"
+    And the admin selects the task "Task 3"
+    When the admin clicks on the "Remove Task" button
+    And the admin cancels the removal
+    Then the system should not delete "Task 3"
+    And the task should remain visible in the project

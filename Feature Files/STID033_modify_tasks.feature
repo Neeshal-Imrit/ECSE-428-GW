@@ -1,5 +1,4 @@
 Feature: Modify Tasks in Projects in Kanban Project Coordination System
-
   As a user
   I want to modify tasks in projects
   So that I can adjust task details if needed
@@ -26,3 +25,16 @@ Feature: Modify Tasks in Projects in Kanban Project Coordination System
     And the user clicks the "Save Changes" button
     Then the system should display an error message "Please enter a valid deadline"
     And the task details should not be updated
+  #Alternative Flow
+
+  Scenario: User cancels task modification
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects the project "Project Gamma"
+    And the user selects the task "Task 3"
+    When the user clicks on the "Edit Task" button
+    And the user updates the task description to "New task description"
+    And the user changes the task deadline to "2025-04-01"
+    And the user clicks the "Cancel" button
+    Then the system should not save the changes
+    And the task details should remain unchanged

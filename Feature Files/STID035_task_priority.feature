@@ -1,5 +1,4 @@
 Feature: Assign Priority Levels to Tasks in Kanban Project Coordination System
-
   As a user
   I want to assign priority levels to tasks
   So that I can focus on the most critical tasks
@@ -25,3 +24,16 @@ Feature: Assign Priority Levels to Tasks in Kanban Project Coordination System
     And the user clicks the "Save Priority" button
     Then the system should display an error message "Invalid priority level"
     And no priority should be assigned to the task
+  #Error Flow
+
+  Scenario: System fails to assign priority due to server error
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects the project "Project Gamma"
+    And the user selects the task "Task 3"
+    When the user clicks on the "Assign Priority" button
+    And the user selects the priority "Medium"
+    And the user clicks the "Save Priority" button
+    And a server error occurs
+    Then the system should display an error message "Failed to assign priority due to server error. Please try again later."
+    And the system should log the error for further investigation

@@ -1,5 +1,4 @@
 Feature: Archive Completed Projects in Kanban Project Coordination System
-
   As an admin
   I want to archive completed projects
   So that I can declutter the project list
@@ -19,3 +18,13 @@ Feature: Archive Completed Projects in Kanban Project Coordination System
     When the admin clicks on the "Archive Project" button
     Then the system should display an error message "Only completed projects can be archived"
     And "Project Beta" should remain in the active projects list
+  #Alternative Flow
+
+  Scenario: Admin cancels archiving a project
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects a completed project "Project Gamma"
+    When the admin clicks on the "Archive Project" button
+    And the admin clicks the "Cancel" button
+    Then the system should not archive "Project Gamma"
+    And "Project Gamma" should remain in the active projects list

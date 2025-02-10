@@ -1,5 +1,4 @@
 Feature: Add Comments to Tasks in Kanban Project Coordination System
-
   As a user
   I want to add comments to tasks
   So that I can share updates or ask for clarifications
@@ -22,3 +21,13 @@ Feature: Add Comments to Tasks in Kanban Project Coordination System
     And the user clicks the "Add Comment" button
     Then the system should display an error message "Please enter a comment"
     And no comment should be added
+  #Alternative Flow
+
+  Scenario: User cancels adding a comment to a task
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects the task "Task 3"
+    When the user enters the comment "Need to review this task"
+    And the user clicks the "Cancel" button
+    Then the system should not add the comment
+    And no comment should be visible in the task details
