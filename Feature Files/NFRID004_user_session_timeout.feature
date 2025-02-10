@@ -17,3 +17,11 @@ Feature: User Session Timeout for Enhanced Account Security
     When the user has been inactive for less than 30 minutes
     Then the system should not log out the user
     And the user should remain logged in and continue working
+    
+  #Error Flow
+  Scenario: User is not logged out after 30 minutes of inactivity on an android device
+    Given the user is logged into the Kanban system using his android device 
+    And the user does not interact with the system (e.g., clicks a task or updates a project)
+    When the user has been inactive for more than 30 minutes
+    Then the system should not log out the user
+    And the user should remain logged in and continue working

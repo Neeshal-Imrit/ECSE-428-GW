@@ -51,3 +51,12 @@ Feature: GitHub Authentication for Kanban Project Coordination System
     Then the user should see a message informing them that the permission is required
     And the user should be asked to grant the necessary permissions or cancel the login process
     And the page should load within 2.5 seconds
+  # Error Flow
+  Scenario: Error during GitHub authentication process
+    Given the user is on the Kanban project system login page
+    When the user clicks on the "Login with GitHub" button
+    And the user is redirected to the GitHub authentication page
+    And an error occurs during the authentication process
+    Then the user should see an error message indicating the authentication error
+    And the user should be given the option to retry or cancel the login
+    And the page should load within 2.5 seconds

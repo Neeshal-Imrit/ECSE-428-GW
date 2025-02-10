@@ -15,8 +15,10 @@ Feature: Mobile Responsiveness for Task and Project Management
     When the user clicks on a task from the "Project Dashboard"
     Then the system should load the task details in a responsive view suitable for mobile
 
-  Scenario: User creates a task on mobile
+  # Error Flow
+  Scenario: User creates a task on mobile and the device froze
     Given the user is logged into the Kanban system on a mobile device
     When the user clicks on the "Create Task" button
     Then the system should display the task creation form optimized for mobile use
-    And the user should be able to submit the task on their mobile device
+    Then  the system crashes and an error message is displayed
+    And the system  logs the event
