@@ -26,6 +26,7 @@ Feature: Assign Tasks to Specific Team Members in Kanban Project Coordination Sy
     Then the system should assign "Task 2" to both "John Doe" and "Jane Smith"
     And "Task 2" should be listed under both "John Doe's tasks" and "Jane Smith's tasks"
 
+  # Error Flow
   Scenario: User attempts to assign a task without selecting a team member
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"

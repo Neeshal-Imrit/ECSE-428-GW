@@ -24,6 +24,7 @@ Feature: Assign Team Members to Specific Projects in Kanban Project Coordination
     Then the system should assign both "John Doe" and "Jane Smith" to "Project Beta"
     And both team members should be listed as part of the project team
 
+  # Error Flow
   Scenario: Admin attempts to assign a team member who is already assigned
     Given the admin is logged into the Kanban system
     And the admin navigates to the "Project Dashboard"

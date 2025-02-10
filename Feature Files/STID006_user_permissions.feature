@@ -12,6 +12,7 @@ Feature: Assign Roles and Permissions to Users in Kanban Project Coordination Sy
     Then the user should have "Project Manager" permissions
     And the system should display a confirmation message "Role assigned successfully"
 
+  # Error flow
   Scenario: Admin attempts to assign an invalid role
     Given the admin is logged into the Kanban system
     And the admin navigates to the "User Management" section

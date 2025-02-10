@@ -13,6 +13,7 @@ Feature: Mark Tasks as Complete in Kanban Project Coordination System
     Then the system should mark "Task 1" as complete
     And "Task 1" should be listed under completed tasks
 
+  # Error flow
   Scenario: User attempts to mark a task as complete without selecting a task
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"
@@ -20,3 +21,11 @@ Feature: Mark Tasks as Complete in Kanban Project Coordination System
     When the user clicks on the "Mark as Complete" button without selecting a task
     Then the system should display an error message "Please select a task to mark as complete"
     And no task should be marked as complete
+
+    Scenario: User views completed tasks
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects a project "Project Gamma"
+    When the user clicks on the "Completed Tasks" tab
+    Then the system should display a list of all completed tasks for "Project Gamma"
+    And the user should be able to see the details of each completed task

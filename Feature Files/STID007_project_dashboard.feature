@@ -31,3 +31,11 @@ Feature: View Project Overview in Kanban Project Coordination System
     When the user navigates to the "Project Dashboard"
     Then the user should see a color-coded status indicator next to each project
     And the user should be able to filter projects by status (e.g., "Show Completed", "Show In Progress")
+
+  # Error flow
+  Scenario: Error loading project dashboard
+    Given the user is logged into the Kanban system
+    When the user navigates to the "Project Dashboard"
+    And an error occurs while loading the dashboard
+    Then the system should display an error message "Unable to load project dashboard"
+    And the user should have the option to retry loading the dashboard

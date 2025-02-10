@@ -34,6 +34,7 @@ Feature: Update Project Status in Kanban Project Coordination System
     Then the system should update the status of "Project Gamma" to "On Hold"
     And the project page should display the updated status "On Hold"
 
+  # Error flow
   Scenario: User attempts to update project status without selecting a status
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"

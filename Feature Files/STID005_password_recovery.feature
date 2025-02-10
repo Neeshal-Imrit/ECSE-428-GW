@@ -20,6 +20,7 @@ Feature: Password Recovery for Kanban Project Coordination System
     And the user should see a confirmation message "Password updated successfully"
     And the user should be redirected to the login page
 
+  # Error flow
   Scenario: User enters an invalid email for password recovery
     Given the user is on the login page
     When the user clicks on the "Forgot Password" link

@@ -14,6 +14,7 @@ Feature: Create Tasks for a Project in Kanban Project Coordination System
     Then the system should create the task "Task 1"
     And the task "Task 1" should appear in the project task list
 
+  # Error flow
   Scenario: User attempts to create a task without entering details
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"

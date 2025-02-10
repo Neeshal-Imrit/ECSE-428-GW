@@ -31,3 +31,15 @@ Feature: Participate in Discussions with My Team in Kanban Project Coordination 
     When the user clicks on the "Discussion" button
     Then the system should display a list of previous discussion messages
     And the user should be able to read and respond to existing messages
+
+ # Error flow
+  Scenario: Error during discussion participation
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects a project "Project Delta"
+    When the user clicks on the "Discussion" button
+    And the user enters a message "How do we solve issue Y?"
+    And the user clicks the "Send" button
+    And an error occurs while sending the message
+    Then the system should display an error message indicating the sending error
+    And the message should not be added to the discussion thread

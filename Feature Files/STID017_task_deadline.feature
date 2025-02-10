@@ -26,6 +26,7 @@ Feature: Set Deadlines for Tasks in Kanban Project Coordination System
     Then the system should display an error message "Cannot set a past deadline"
     And the deadline should not be set
 
+  # Error flow
   Scenario: User sets a task deadline with an invalid date
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"

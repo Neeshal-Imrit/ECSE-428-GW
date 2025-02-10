@@ -25,6 +25,7 @@ Feature: Edit Project Details in Kanban Project Coordination System
     Then the system should display an error message "Project name cannot be empty"
     And the project details should remain unchanged
 
+  # Error flow
   Scenario: Admin updates project with an invalid deadline format
     Given the admin is logged into the Kanban system
     And the admin navigates to the "Project Dashboard"

@@ -35,3 +35,12 @@ Feature: View Project Timeline in Kanban Project Coordination System
     When the user clicks on the "View Timeline" button
     Then the system should display a message "No milestones found for this project"
     And the user should be able to add milestones to the project
+  # Error flow
+  Scenario: Error loading project timeline
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects a project "Project Epsilon"
+    When the user clicks on the "View Timeline" button
+    And an error occurs while loading the timeline
+    Then the system should display an error message "Unable to load project timeline"
+    And the user should have the option to retry loading the timeline

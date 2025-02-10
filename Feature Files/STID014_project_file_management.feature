@@ -14,6 +14,7 @@ Feature: Upload and Manage Project Files in Kanban Project Coordination System
     Then the system should successfully upload the file
     And the uploaded file "project_plan.pdf" should appear in the project file list
 
+  # Error Flow
   Scenario: User attempts to upload a file with an unsupported format
     Given the user is logged into the Kanban system
     And the user navigates to the "Project Dashboard"

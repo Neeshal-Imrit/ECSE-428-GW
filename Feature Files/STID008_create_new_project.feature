@@ -32,3 +32,12 @@ Feature: Create New Projects in Kanban Project Coordination System
     And the admin clicks the "Create Project" button
     Then the system should create the new project with an empty description
     And the admin should be redirected to the newly created project's page
+
+   #Error flow
+  Scenario: Error during project creation process
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Create New Project" page
+    When the admin attempts to create a new project
+    And an error occurs during the project creation process
+    Then the system should display an error message indicating the creation error
+    And the admin should remain on the "Create New Project" page with the error message displayed

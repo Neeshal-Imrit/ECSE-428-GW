@@ -23,3 +23,15 @@ Feature: Send Announcements to All Project Members in Kanban Project Coordinatio
     And the admin clicks the "Send" button
     Then the system should display an error message "Please enter a message before sending"
     And no announcement should be sent
+
+  # Error flow
+  Scenario: Error during announcement sending process
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects a project "Project Gamma"
+    When the admin clicks on the "Send Announcement" button
+    And the admin enters the message "The project meeting is rescheduled"
+    And the admin clicks the "Send" button
+    And an error occurs while sending the announcement
+    Then the system should display an error message indicating the sending error
+    And no announcement should be sent

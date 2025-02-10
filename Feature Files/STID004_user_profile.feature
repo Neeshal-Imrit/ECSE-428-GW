@@ -64,3 +64,13 @@ Feature: Manage User Profile in Kanban Project Coordination System
     And the user navigates to the "Profile" section
     Then the user should see their current profile information (name, email, etc.)
     And the user should have the option to update their profile details
+
+   # Error flow
+  Scenario: Error during profile update process
+    Given the user is logged into the Kanban project system
+    And the user navigates to the "Profile" section
+    When the user attempts to update their profile information
+    And an error occurs during the update process
+    Then the system should display an error message indicating the update error
+    And the user should remain on the profile page with the error message displayed
+  

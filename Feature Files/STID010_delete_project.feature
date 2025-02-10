@@ -41,3 +41,14 @@ Feature: Delete Projects in Kanban Project Coordination System
     Then the system should display a warning message "This project has active tasks. Are you sure you want to delete it?"
     And the admin should have the option to cancel the deletion or proceed
     And the project should only be deleted if the admin confirms the action
+
+     # Error flow
+  Scenario: Error during project deletion process
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Project Dashboard"
+    And the admin selects a project "Project Epsilon"
+    When the admin clicks the "Delete Project" button
+    And an error occurs during the deletion process
+    Then the system should display an error message indicating the deletion error
+    And the project should remain in the system
+    And the admin should have the option to retry deleting the project
