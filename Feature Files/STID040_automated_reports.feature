@@ -1,5 +1,4 @@
 Feature: Receive Automated Reports in the Kanban Project Coordination System
-
   As a user
   I want to receive automated reports
   So that I can monitor project progress
@@ -42,3 +41,12 @@ Feature: Receive Automated Reports in the Kanban Project Coordination System
     When the system attempts to send an automated report
     Then the system should display a warning "Please enter a valid email address to receive reports"
     And the report should not be sent until the user provides a valid email address
+#Error Flow
+
+  Scenario: System fails to send report due to server error
+    Given the user is logged into the Kanban system
+    And the user has set their email preferences to receive weekly reports
+    When the system attempts to send the weekly progress report
+    And a server error occurs
+    Then the system should display an error message "Failed to send report due to server error. Please try again later."
+    And the system should log the error for further investigation

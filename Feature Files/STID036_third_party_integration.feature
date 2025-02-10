@@ -1,5 +1,4 @@
 Feature: Integrate Third-Party Tools in Kanban Project Coordination System
-
   As an admin
   I want to integrate third-party tools with the Kanban system
   So that I can enhance project functionality
@@ -21,3 +20,14 @@ Feature: Integrate Third-Party Tools in Kanban Project Coordination System
     And the admin clicks the "Connect" button
     Then the system should display an error message "Tool not supported"
     And no integration should be created
+  #Error Flow
+
+  Scenario: System fails to integrate third-party tool due to server error
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Integration Settings" page
+    When the admin clicks on the "Add Integration" button
+    And the admin selects the third-party tool "Jira"
+    And the admin clicks the "Connect" button
+    And a server error occurs
+    Then the system should display an error message "Failed to integrate tool due to server error. Please try again later."
+    And the system should log the error for further investigation

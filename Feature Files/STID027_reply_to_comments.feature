@@ -1,5 +1,4 @@
 Feature: Reply to Comments in Kanban Project Coordination System
-
   As a user
   I want to reply to comments on tasks
   So that I can keep discussions organized
@@ -24,3 +23,15 @@ Feature: Reply to Comments in Kanban Project Coordination System
     And the user clicks the "Send" button
     Then the system should display an error message "Please enter a reply"
     And no reply should be added
+  #Alternative Flow
+
+  Scenario: User cancels replying to a comment
+    Given the user is logged into the Kanban system
+    And the user navigates to the "Project Dashboard"
+    And the user selects the task "Task 3"
+    And the user reads a comment "Need feedback on this task"
+    When the user clicks on "Reply" to the comment
+    And the user enters the reply "I will review it soon"
+    And the user clicks the "Cancel" button
+    Then the system should not add the reply
+    And no reply should be visible to other users

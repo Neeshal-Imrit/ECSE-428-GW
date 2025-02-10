@@ -1,5 +1,4 @@
 Feature: Restore Archived Projects in Kanban Project Coordination System
-
   As an admin
   I want to restore archived projects
   So that I can access them if needed
@@ -19,3 +18,13 @@ Feature: Restore Archived Projects in Kanban Project Coordination System
     When the admin clicks on the "Restore Project" button
     Then the system should display an error message "Project not found in archived projects"
     And no project should be restored
+  #Alternative Flow
+
+  Scenario: Admin cancels restoring an archived project
+    Given the admin is logged into the Kanban system
+    And the admin navigates to the "Archived Projects" section
+    And the admin selects the archived project "Project Beta"
+    When the admin clicks on the "Restore Project" button
+    And the admin clicks the "Cancel" button
+    Then the system should not restore "Project Beta"
+    And "Project Beta" should remain in the "Archived Projects" section
