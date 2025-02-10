@@ -22,7 +22,7 @@ Feature: Create Account
         When the user provide incomplete details when registering
         And the user clicks on register
         Then the user should see an error message
-        Then their account should not be created
+        Then their account should not be created.
 
     Scenario: Create account with existing email.
         Given the user is unregistered
